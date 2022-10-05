@@ -7,7 +7,7 @@ import Page404 from '../pages/404';
 function App() {
   return (
     <Router>
-			<div className="app-container">
+			<div>
 				<Routes>
 					<Route path="/" element={<Layout />} >
 						<Route index element={<Home/>} />

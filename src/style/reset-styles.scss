@@ -49,10 +49,10 @@ a:not([class]) {
 }
 
 /* Упрощаем работу с изображениями */
-img {
-  max-width: 100%;
-  display: block;
-}
+// img {
+//  width: 500px;
+//  height: 300px;
+// }
 
 /* Указываем понятную периодичность в потоке данных у article*/
 article > * + * {

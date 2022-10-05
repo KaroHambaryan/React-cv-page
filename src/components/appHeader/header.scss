@@ -1,0 +1,11 @@
+@import "../../style/global-styles.scss";
+
+.app-header{
+	background-color: #FAC710;
+	padding: 10px;
+	border-radius: 10px;
+	&__wrapper_flex-sp-beetwin{
+		display: flex;
+		justify-content: space-between;
+	}
+}

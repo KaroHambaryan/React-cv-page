@@ -1,9 +1,9 @@
- 
+ import Slider from "../components/Slider/Slider";
 const Home = () => {
 	return (
-		<div>
-			<p>Home phage</p>
-		</div>
+		<>
+			<Slider/>
+		</>
 	);
 };
 
