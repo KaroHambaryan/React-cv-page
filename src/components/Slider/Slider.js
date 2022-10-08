@@ -1,7 +1,7 @@
 // import { useEffect, useState } from "react";
 import { useCallback, useEffect, useState } from "react";
 
-import useGetSpinerData from "../../services/service.hook.js";
+import useGetData from "../../services/service.hook.js";
 import ImageItem from "../../container/ImageItem/ImageItem.jsx";
 import Spinner from "../spinner/Spinner.js";
 import ErrorMessage from "../errorMessage/ErrorMessage.js";
@@ -12,7 +12,7 @@ const Slider = () => {
 	const[index, setIndex] = useState(0)
 	const [sliderData, setSliderData] = useState(null);
 	const [newItemLoading, setnewItemLoading] = useState(false);
-	const { loading, error,getSpinerData } = useGetSpinerData();
+	const { loading, error,getSliderData } = useGetData();
 
 	useEffect(() => {
 		onRequest("data/info.json", true)
@@ -21,7 +21,7 @@ const Slider = () => {
 	const onRequest = useCallback((_url, initial) => {
 		initial ? setnewItemLoading(false) : setnewItemLoading(true);
 		if (_url) {
-			getSpinerData(_url)
+			getSliderData(_url)
 				.then(res => {
 					setSliderData(res)
 				});
