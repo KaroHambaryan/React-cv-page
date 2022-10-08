@@ -15,11 +15,10 @@ const Slider = () => {
 	const { loading, error, getSliderData } = useGetData();
 
 	useEffect(() => {
-		onRequest("data/info.json", true)
+		onRequest("data/info.json")
 	}, []);
 
-	const onRequest = useCallback((_url, initial) => {
-		initial ? setnewItemLoading(false) : setnewItemLoading(true);
+	const onRequest = useCallback((_url) => {
 		if (_url) {
 			getSliderData(_url)
 				.then(res => {
@@ -55,14 +54,13 @@ const Slider = () => {
 	const errorMessage = error ? <ErrorMessage /> : null;
 	const spinner = loading && !newItemLoading ? <Spinner /> : null;
 
+	let render = spinner || errorMessage || image;
 	return (
 		<>
 			<div className="slider">
 				<div onClick={previousElement} className="slider__button-left slider__button-position "></div>
 				<div className="slider__image-wrapper">
-					{errorMessage}
-					{spinner}
-					{image}
+					{render}
 				</div>
 				<div onClick={nextElement} className="slider__button-right slider__button-position "></div>
 			</div>

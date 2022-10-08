@@ -6,6 +6,8 @@
 	width: 100%;
 	height: 400px;
 	&__image-wrapper{
+		display:flex;
+		align-items:center;
 		height: 400px;
 		max-width: 600px;
 		background-color: aliceblue;
@@ -14,6 +16,7 @@
 			display: block;
 			max-width: 100%;
 			object-fit:fill;
+			
 		}
 	}
 	&__button-position{
