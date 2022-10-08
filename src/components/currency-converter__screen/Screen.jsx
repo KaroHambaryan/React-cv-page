@@ -1,4 +1,5 @@
-const Screen = ({settlementCurrency, exchangeCost, firstCurrency, lastCurrency }) => {
+
+const Screen = ({ settlementCurrency, exchangeCost, firstCurrency, lastCurrency }) => {
 	return (
 		<>
 			<div>

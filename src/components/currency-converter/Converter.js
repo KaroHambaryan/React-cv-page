@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 
-import Screen from "../CurrencyScreen/Screen";
-import Option from "../SelectOption/SelectOption";
-import useGetData from "../../services/service.hook";
+import Screen from "../currency-converter__screen/Screen.jsx";
+import Option from "../currency-converter__select-option/SelectOption";
+import useGetData from "../services/service.hook"
 
 
 import "./converter.scss";
@@ -46,20 +46,20 @@ const Converter = () => {
 
 	const inputFirstValue = (e) => {
 		e.preventDefault();
-		
-			let val = convertData?.resData[selecLastValue]?.rate * e.target.value;
-			
-			lastValue.current.value = e.target.value ? val.toFixed(2) :
-				convertData?.resData[selecLastValue]?.rate.toFixed(2);
-			console.log(lastValue.current.value);
+
+		let val = convertData?.resData[selecLastValue]?.rate * e.target.value;
+
+		lastValue.current.value = e.target.value ? val.toFixed(2) :
+			convertData?.resData[selecLastValue]?.rate.toFixed(2);
+		console.log(lastValue.current.value);
 
 	}
 
 	const inputLastValue = (e) => {
-			e.preventDefault();
-			let val = e.target.value / convertData?.resData[selecLastValue]?.rate
-			firstValue.current.value = e.target.value >1 ? val.toFixed(2) :
-			e.target.value ==='1'? val: 1 
+		e.preventDefault();
+		let val = e.target.value / convertData?.resData[selecLastValue]?.rate
+		firstValue.current.value = e.target.value > 1 ? val.toFixed(2) :
+			e.target.value === '1' ? val : 1
 	}
 
 	return (

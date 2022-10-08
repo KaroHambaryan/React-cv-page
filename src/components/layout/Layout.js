@@ -1,11 +1,11 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
-import Header from "../components/appHeader/Header";
-import Spinner from "../components/spinner/Spinner";
-import Footer from "../components/appFooter/Footer";
+import Header from "../header/Header";
+import Spinner from "../spinner/Spinner";
+import Footer from "../footer/Footer";
 
-import "../style/global-styles.scss";
+import "../../style/global-styles.scss";
 
 const Layout = () => {
 	return (

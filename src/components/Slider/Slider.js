@@ -1,18 +1,18 @@
 // import { useEffect, useState } from "react";
 import { useCallback, useEffect, useState } from "react";
 
-import useGetData from "../../services/service.hook.js";
-import ImageItem from "../../container/ImageItem/ImageItem.jsx";
-import Spinner from "../spinner/Spinner.js";
-import ErrorMessage from "../errorMessage/ErrorMessage.js";
+import useGetData from "../services/service.hook";
+import ImageItem from "../slider__Image_Items/ImageItem.jsx";
+import Spinner from "../spinner/Spinner";
+import ErrorMessage from "../error-message/ErrorMessage";
 
 import "./slider.scss";
 
 const Slider = () => {
-	const[index, setIndex] = useState(0)
+	const [index, setIndex] = useState(0)
 	const [sliderData, setSliderData] = useState(null);
 	const [newItemLoading, setnewItemLoading] = useState(false);
-	const { loading, error,getSliderData } = useGetData();
+	const { loading, error, getSliderData } = useGetData();
 
 	useEffect(() => {
 		onRequest("data/info.json", true)
@@ -44,10 +44,10 @@ const Slider = () => {
 		}
 	}, [index]);
 
-	const renderSliderImage =(data, index) => {
+	const renderSliderImage = (data, index) => {
 		return (
 			<>
-				<ImageItem data={data} index={ index } />
+				<ImageItem data={data} index={index} />
 			</>
 		);
 	};
@@ -60,9 +60,9 @@ const Slider = () => {
 			<div className="slider">
 				<div onClick={previousElement} className="slider__button-left slider__button-position "></div>
 				<div className="slider__image-wrapper">
-				{errorMessage}
-				{spinner}
-				{image}
+					{errorMessage}
+					{spinner}
+					{image}
 				</div>
 				<div onClick={nextElement} className="slider__button-right slider__button-position "></div>
 			</div>
