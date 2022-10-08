@@ -18,9 +18,9 @@ const Converter = () => {
 	// variables
 	const [convertData, setConvertData] = useState(null);
 	const [selecLastValue, setSelectLastValue] = useState("amd");
-	const [newItemLoading, setnewItemLoading] = useState(true);
+
 	// cosstom hooks - getting function all data information
-	const { loading, error, getCorrencyConverterData } = useGetData();
+	const { loading, error, clearError, getCorrencyConverterData } = useGetData();
 
 	// refs to input
 	const firstValue = useRef();
@@ -28,26 +28,27 @@ const Converter = () => {
 
 	// mount - get datas
 	useEffect(() => {
-		setnewItemLoading(false)
 		getCorrencyConverterData()
 			.then(res => {
 				setConvertData(res);
-				res ? setnewItemLoading(false) : setnewItemLoading(true);
+				if (error) {
+					clearError();
+				}
 			});
+		return renderCurrencyConverter;
 	}, []);
 
 	// it's function handle the value of the currency of the first input,
 	// which in turn is the main value against which the calculations will be carried out
 	const handleFirstValue = (e) => {
-		setnewItemLoading(false)
 		// get data by currency code value
 		getCorrencyConverterData(e.target.value)
 			.then(res => {
 				setConvertData(res)
+			
 				return res
 			})
 			.then(res => {
-				setnewItemLoading(true)
 				// processing the value of the second input, after the request,
 				//  based on the value of the first input.
 				if (!firstValue.current.value) {
@@ -122,80 +123,16 @@ const Converter = () => {
 
 	}
 
-	const renderCurrencyConverter = () => {
+	function renderCurrencyConverter() {
 		return <>
-
-			<h2>Currency Converter</h2>
-			<div className="converter__content">
-				<div className="converter__screen">
-					<Screen
-						firstConverterValue={convertData?.defaultValue}
-						firstValueCode={convertData?.default.toUpperCase()}
-						LastConverterValue={convertData?.resData[selecLastValue]?.rate}
-						lastValueCode={convertData?.resData[selecLastValue]?.code}
-					/>
-				</div>
-				<div className="converter__Input">
-					{/* first input wrap */}
-					<div>
-						{/* first input value */}
-						<input
-							ref={firstValue}
-							onChange={(e) => inputFirstValue(e)}
-							type="number"
-							placeholder={convertData?.defaultValue}
-							min='1'
-						/>
-						{/* first value code */}
-						<select onChange={(e) => handleFirstValue(e)} name="currency">
-							{convertData && <>
-								{/* default value code */}
-								<option
-									selected
-									key={"hjshjdh887"}
-									value={convertData.defaultValue}>
-									{convertData.default.toUpperCase()}
-								</option>
-								<Option
-									unikalKay={"hjh565gb5aj"}
-									data={convertData}
-									defaultValue={selecLastValue} />
-							</>
-							}
-						</select>
-					</div>
-					{/* last input wrap */}
-					<div>
-						{/* last input Value */}
-						<input
-							ref={lastValue}
-							onChange={(e) => inputLastValue(e)}
-							type="number"
-							placeholder={convertData?.resData[selecLastValue]?.rate}
-							min="1"
-						/>
-						{/* last value code */}
-						<select onChange={(e) => handleLastValue(e)} name="currency">
-							{
-								convertData && <>
-									{/* default value */}
-									<option
-										selected
-										key={"sdjsh7s3jh3j4v"}
-										value={selecLastValue}>
-										{convertData.resData[selecLastValue].code + "___" + convertData.resData[selecLastValue].name}
-									</option>
-									<Option
-										unikalKay={"iteywte7s8s78s7"}
-										data={convertData}
-										defaultValue={selecLastValue} />
-								</>
-							}
-						</select>
-					</div>
-				</div>
+			<div className="converter__screen">
+				<Screen
+					firstConverterValue={convertData?.defaultValue}
+					firstValueCode={convertData?.default.toUpperCase()}
+					LastConverterValue={convertData?.resData[selecLastValue]?.rate}
+					lastValueCode={convertData?.resData[selecLastValue]?.code}
+				/>
 			</div>
-
 		</>;
 	}
 
@@ -203,7 +140,7 @@ const Converter = () => {
 
 	const converter = renderCurrencyConverter();
 	const errorMessage = error ? <ErrorMessage /> : null;
-	const spinner = loading && (!newItemLoading ? <Spinner /> : converter);
+	const spinner = loading ?  <Spinner /> : null;
 
 	let render = spinner || errorMessage || converter;
 
@@ -211,7 +148,69 @@ const Converter = () => {
 		<>
 			<div className="converter">
 				<div className="converter__wrapper">
-					{ render }
+					<h2>Currency Converter</h2>
+					<div className="converter__content">
+						{render}
+						<div className="converter__Input">
+							{/* first input wrap */}
+							<div>
+								{/* first input value */}
+								<input
+									ref={firstValue}
+									onChange={(e) => inputFirstValue(e)}
+									type="number"
+									placeholder={convertData?.defaultValue}
+									min='1'
+								/>
+								{/* first value code */}
+								<select onChange={(e) => handleFirstValue(e)} name="currency">
+									{convertData && <>
+										{/* default value code */}
+										<option
+											selected
+											key={"hjshjdh887"}
+											value={convertData.defaultValue}>
+											{convertData.default.toUpperCase()}
+										</option>
+										<Option
+											unikalKay={"hjh565gb5aj"}
+											data={convertData}
+											defaultValue={selecLastValue} />
+									</>
+									}
+								</select>
+							</div>
+							{/* last input wrap */}
+							<div>
+								{/* last input Value */}
+								<input
+									ref={lastValue}
+									onChange={(e) => inputLastValue(e)}
+									type="number"
+									placeholder={convertData?.resData[selecLastValue]?.rate}
+									min="1"
+								/>
+								{/* last value code */}
+								<select onChange={(e) => handleLastValue(e)} name="currency">
+									{
+										convertData && <>
+											{/* default value */}
+											<option
+												selected
+												key={"sdjsh7s3jh3j4v"}
+												value={selecLastValue}>
+												{convertData.resData[selecLastValue].code + "___" + convertData.resData[selecLastValue].name}
+											</option>
+											<Option
+												unikalKay={"iteywte7s8s78s7"}
+												data={convertData}
+												defaultValue={selecLastValue} />
+										</>
+									}
+								</select>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</>

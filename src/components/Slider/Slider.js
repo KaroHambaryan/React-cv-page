@@ -12,7 +12,7 @@ const Slider = () => {
 	const [index, setIndex] = useState(0)
 	const [sliderData, setSliderData] = useState(null);
 	const [newItemLoading, setnewItemLoading] = useState(false);
-	const { loading, error, getSliderData } = useGetData();
+	const { loading, error, clearError, getSliderData } = useGetData();
 
 	useEffect(() => {
 		onRequest("data/info.json")
@@ -22,7 +22,10 @@ const Slider = () => {
 		if (_url) {
 			getSliderData(_url)
 				.then(res => {
-					setSliderData(res)
+					setSliderData(res);
+					if (error) {
+						clearError()
+					}
 				});
 		}
 	}, []);
