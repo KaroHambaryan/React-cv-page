@@ -1,10 +1,11 @@
 
-const Screen = ({ settlementCurrency, exchangeCost, firstCurrency, lastCurrency }) => {
+const Screen = ({ firstConverterValue, firstValueCode, LastConverterValue, lastValueCode }) => {
 	return (
 		<>
 			<div>
-				<h2>{`${exchangeCost}  ${lastCurrency} `}</h2>
-				<h2>{` ${parseFloat(settlementCurrency).toFixed(2)} ${firstCurrency}`}</h2>
+				<h2>{`${firstConverterValue}  ${firstValueCode}`}</h2>
+
+				<h2>{` ${parseFloat(LastConverterValue).toFixed(5)} ${lastValueCode}`}</h2>
 			</div>
 		</>
 	);

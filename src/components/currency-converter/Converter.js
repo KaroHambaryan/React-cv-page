@@ -1,65 +1,118 @@
+// hooks
 import { useState, useEffect, useRef } from "react";
 
-import Screen from "../currency-converter__screen/Screen.jsx";
-import Option from "../currency-converter__select-option/SelectOption";
+// costom hook
 import useGetData from "../services/service.hook"
 
+// convertrer components
+import Screen from "../currency-converter__screen/Screen.jsx";
+import Option from "../currency-converter__select-option/SelectOption";
 
+// converter styles
 import "./converter.scss";
 
+// Converter
 const Converter = () => {
 
-	const { getCorrencyConverterData } = useGetData();
-
+	// variables
 	const [convertData, setConvertData] = useState(null);
 	const [selecLastValue, setSelectLastValue] = useState("amd");
 
+	// cosstom hooks - getting function all data information
+	const { getCorrencyConverterData } = useGetData();
+
+	// refs to input
 	const firstValue = useRef();
 	const lastValue = useRef();
-	// const [exchange, setExchange] = useState();
 
-
+	// mount - get datas
 	useEffect(() => {
 		getCorrencyConverterData()
 			.then(res => setConvertData(res));
 	}, []);
 
-	const handeleFirstValue = (e) => {
+	// it's function handle the value of the currency of the first input,
+	// which in turn is the main value against which the calculations will be carried out
+	const handleFirstValue = (e) => {
+		// get data by currency code value
 		getCorrencyConverterData(e.target.value)
 			.then(res => {
 				setConvertData(res)
 				return res
 			})
 			.then(res => {
-				let val = res.resData[selecLastValue].rate * firstValue.current.value;
-				lastValue.current.value =
-					firstValue.current.value ? val.toFixed(2) :
-						res.resData[selecLastValue].rate;
+				// processing the value of the second input, after the request,
+				//  based on the value of the first input.
+				if (!firstValue.current.value) {
+					// lastValue ist's a value by second input received via useRef 
+					lastValue.current.value = res.resData[selecLastValue].rate
+				} else if (parseFloat(firstValue.current.value) === 0) {
+					lastValue.current.value = 0;
+				} else if (firstValue.current.value === "1") {
+					lastValue.current.value = res.resData[selecLastValue].rate *
+						firstValue.current.value;
+				} else {
+					// firstValue ist's a value by first input received via useRef
+					let val = res.resData[selecLastValue].rate *
+						firstValue.current.value;
+					lastValue.current.value = val.toFixed(2)
+				}
 			})
 	}
 
-	const handeleLastValue = (e) => {
+	// function handleLastValue after entering the value of the second currency,
+	//  it calculates based on the value of the first input
+	const handleLastValue = (e) => {
 		setSelectLastValue(e.target.value);
-		let val = convertData?.resData[e.target.value]?.rate * firstValue.current.value
-		lastValue.current.value = val.toFixed(2);
+		if (!firstValue.current.value) {
+			lastValue.current.value = convertData?.resData[e.target.value]?.rate
+		} else if (parseFloat(e.target.value) === 0) {
+			lastValue.current.value = 0
+		} else if (firstValue.current.value === "1") {
+			lastValue.current.value = convertData?.resData[e.target.value]?.rate
+		} else {
+			let val = convertData?.resData[e.target.value]?.rate * firstValue.current.value
+			lastValue.current.value = val.toFixed(2);
+		}
 	}
 
+	// when entering a number in the right input, 
+	// it performs calculations and displays the resulting value in the first input
 	const inputFirstValue = (e) => {
 		e.preventDefault();
-
-		let val = convertData?.resData[selecLastValue]?.rate * e.target.value;
-
-		lastValue.current.value = e.target.value ? val.toFixed(2) :
-			convertData?.resData[selecLastValue]?.rate.toFixed(2);
-		console.log(lastValue.current.value);
-
+		if (!e.target.value) {
+			// lastValue ist's a value by second input received via useRef 
+			lastValue.current.value = convertData?.resData[selecLastValue]?.rate
+		} else if (parseFloat(e.target.value) === 0) {
+			lastValue.current.value = 0;
+		} else if (e.target.value === "1") {
+			lastValue.current.value = convertData?.resData[selecLastValue]?.rate *
+				e.target.value;
+		} else {
+			// firstValue ist's a value by first input received via useRef
+			let val = convertData?.resData[selecLastValue]?.rate *
+				firstValue.current.value;
+			lastValue.current.value = val.toFixed(2)
+		}
 	}
 
+	// when entering a number in the right input, 
+	// it performs calculations and displays the resulting value in the first input
 	const inputLastValue = (e) => {
 		e.preventDefault();
-		let val = e.target.value / convertData?.resData[selecLastValue]?.rate
-		firstValue.current.value = e.target.value > 1 ? val.toFixed(2) :
-			e.target.value === '1' ? val : 1
+		if (!e.target.value) {
+			// lastValue ist's a value by second input received via useRef 
+			firstValue.current.value = 1
+		} else if (parseFloat(e.target.value) === 0) {
+			firstValue.current.value = 0;
+		} else if (e.target.value === "1") {
+			firstValue.current.value = e.target.value / convertData?.resData[selecLastValue]?.rate
+		} else {
+			// firstValue ist's a value by first input received via useRef
+			let val = e.target.value / convertData?.resData[selecLastValue]?.rate
+			firstValue.current.value = val.toFixed(2)
+		}
+
 	}
 
 	return (
@@ -70,14 +123,16 @@ const Converter = () => {
 					<div className="converter__content">
 						<div className="converter__screen">
 							<Screen
-								settlementCurrency={convertData?.resData[selecLastValue]?.rate}
-								firstCurrency={convertData?.resData[selecLastValue]?.code}
-								exchangeCost={convertData?.defaultValue}
-								lastCurrency={convertData?.default.toUpperCase()}
+								firstConverterValue={convertData?.defaultValue}
+								firstValueCode={convertData?.default.toUpperCase()}
+								LastConverterValue={convertData?.resData[selecLastValue]?.rate}
+								lastValueCode={convertData?.resData[selecLastValue]?.code}
 							/>
 						</div>
 						<div className="converter__Input">
+							{/* first input wrap */}
 							<div>
+								{/* first input value */}
 								<input
 									ref={firstValue}
 									onChange={(e) => inputFirstValue(e)}
@@ -85,37 +140,49 @@ const Converter = () => {
 									placeholder={convertData?.defaultValue}
 									min='1'
 								/>
-								<select onChange={(e) => handeleFirstValue(e)} name="currency">
+								{/* first value code */}
+								<select onChange={(e) => handleFirstValue(e)} name="currency">
 									{convertData && <>
+										{/* default value code */}
 										<option
 											selected
 											key={"hjshjdh887"}
 											value={convertData.defaultValue}>
 											{convertData.default.toUpperCase()}
 										</option>
-										<Option data={convertData} defaultValue={selecLastValue} />
+										<Option
+											unikalKay={"hjh565gb5aj"}
+											data={convertData}
+											defaultValue={selecLastValue} />
 									</>
 									}
 								</select>
 							</div>
+							{/* last input wrap */}
 							<div>
+								{/* last input Value */}
 								<input
 									ref={lastValue}
 									onChange={(e) => inputLastValue(e)}
 									type="number"
-									placeholder={convertData?.resData[selecLastValue]?.rate.toFixed(2)}
+									placeholder={convertData?.resData[selecLastValue]?.rate}
 									min="1"
 								/>
-								<select onChange={(e) => handeleLastValue(e)} name="currency">
+								{/* last value code */}
+								<select onChange={(e) => handleLastValue(e)} name="currency">
 									{
 										convertData && <>
+											{/* default value */}
 											<option
 												selected
 												key={"sdjsh7s3jh3j4v"}
 												value={selecLastValue}>
 												{convertData.resData[selecLastValue].code + "___" + convertData.resData[selecLastValue].name}
 											</option>
-											<Option data={convertData} defaultValue={selecLastValue} />
+											<Option
+												unikalKay={"iteywte7s8s78s7"}
+												data={convertData}
+												defaultValue={selecLastValue} />
 										</>
 									}
 								</select>
@@ -124,7 +191,6 @@ const Converter = () => {
 					</div>
 				</div>
 			</div>
-
 		</>
 	);
 

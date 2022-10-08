@@ -1,22 +1,28 @@
+import { useCallback } from "react";
 
-import { useEffect } from "react";
+const Option = ({ data, defaultValue, unikalKay }) => {
 
 
-const Option = ({data ,defaultValue}) => {
-	useEffect(() => {
-		console.log(data);
-	},[])
+	const onRender = useCallback((data, defaultValue) => {
+		return data && data.name.sort().map((element) => {
+			if (element !== defaultValue) {
+
+				return <option
+					key={element + unikalKay}
+					value={element}
+				>
+					{data.resData[element].code + "___" + data.resData[element].name}
+				</option>;
+			}
+
+		});
+
+	}, []);
+
 	return (
 		<>
 			{
-				data && data.name.sort().map((element) => {
-					if(element !== defaultValue){
-					return <option
-						key={element}
-						value={element}
-						>{data.resData[element].code + "___" + data.resData[element].name}</option>
-					}
-				})
+				onRender(data, defaultValue)
 			}
 		</>
 	);
