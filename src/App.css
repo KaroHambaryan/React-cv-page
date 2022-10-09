@@ -65,9 +65,7 @@
 }
 
 /* ================ BACE =================== */
-*,
-*::before,
-*::after {
+*{
 	margin: 0;
 	padding: 0;
   box-sizing: border-box;
@@ -80,18 +78,14 @@ html{
 body,
 input,
 button,
-textarea,
-select {
+textarea{
 	font-family: var(--body-font);
 	font-size: var(--normal-font-size);
 }
 
 body {
 	background-color: var(--body-color);
-	color: var(--text-color);
-  min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  /* line-height: 1.5; */
+	color: var(--text-color);	
 }
 
 h1,
@@ -101,8 +95,7 @@ h3{
 	font-weight: var(--font-semi-bold);
 }
 
-ul,
-ol {
+ul{
   list-style: none;
 }
 
@@ -117,21 +110,8 @@ button{
 }
 
 img {
-  display: block;
   max-width: 100%;
 	height: auto;
-}
-article > * + * {
-	margin-top: 1em;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }
 
 /* ================ REUSABLE CSS CLASSES =================== */
@@ -194,7 +174,10 @@ article > * + * {
 /* ================ BREAKPOINTS =================== */
  /* For large devices */
 @media only screen and (max-width: 992px) {
-
+	.container{
+		margin-left: var(--mb-1-5);
+		margin-right: var(--mb-1-5);
+	}
 }
  /* For medium devices */
 @media only screen and (max-width: 768px) {
@@ -205,6 +188,9 @@ article > * + * {
 
 }
  /* For small devices */
-@media only screen and (max-width: 576px) {
-	
+@media only screen and (max-width: 350px) {
+	.container{
+		margin-left: var(--mb-1);
+		margin-right: var(--mb-1);
+	}
 }

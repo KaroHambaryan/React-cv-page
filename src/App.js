@@ -1,22 +1,21 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+import  "./App.css";
+
 import Layout from "./components/layout/Layout";
 import Home from "./components/pages/Home";
 import Page404 from "./components/pages/404";
 
-import './App.css';
 
 function App() {
   return (
     <Router>
-			<div>
 				<Routes>
 					<Route path="/" element={<Layout />} >
 						<Route index element={<Home/>} />
 						<Route path="*" element={<Page404 />} />
 					</Route>
 				</Routes>
-			</div>
 		</Router>
   );
 }
