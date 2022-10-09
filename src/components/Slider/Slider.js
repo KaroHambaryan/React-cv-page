@@ -6,7 +6,7 @@ import ImageItem from "../slider__Image_Items/ImageItem.jsx";
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../error-message/ErrorMessage";
 
-import "./slider.scss";
+import "./slider.css";
 
 const Slider = () => {
 	const [index, setIndex] = useState(0)

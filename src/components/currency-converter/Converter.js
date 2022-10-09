@@ -10,7 +10,7 @@ import Screen from "../currency-converter__screen/Screen.jsx";
 import Option from "../currency-converter__select-option/SelectOption";
 
 // converter styles
-import "./converter.scss";
+import "./converter.css";
 
 // Converter
 const Converter = () => {
@@ -151,7 +151,7 @@ const Converter = () => {
 					<h2>Currency Converter</h2>
 					<div className="converter__content">
 						{render}
-						<div className="converter__Input">
+						<div className="converter__input">
 							{/* first input wrap */}
 							<div>
 								{/* first input value */}

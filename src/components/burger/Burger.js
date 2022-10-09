@@ -1,4 +1,4 @@
-import './burger.scss';
+import './burger.css';
 
 const Burger = () => {
 	return (

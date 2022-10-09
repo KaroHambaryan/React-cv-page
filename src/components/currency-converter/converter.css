@@ -1,0 +1,49 @@
+.converter{
+	padding: 20px 0;
+	display: flex;
+	justify-content: center;
+	max-width: 100%;
+	min-height: 300px;
+}
+
+.converter__wrapper{
+	padding: 10px;
+	text-align: center;
+	width: 320px;
+	height: 300px;
+	border-radius: 10px;
+	border: 1px solid black;
+}
+
+.converter__content{
+	height: 90%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+}
+
+.converter__content h2{
+		text-align: right;
+}
+
+.converter__input{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin:10px 0;
+}
+
+.converter__input select{
+	width: 100%;
+	border: 1px solid;
+	border-radius: 5px;
+}
+.converter__input input{
+	width: 100%;
+	text-align: right;
+	border: 1px solid;
+	border-radius: 5px;
+	outline: none;
+	text-shadow: 2px 15px 7px  #000203;
+}
