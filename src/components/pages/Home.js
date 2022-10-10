@@ -1,10 +1,10 @@
-// import Slider from "../slider/Slider";
-// import Converter from "../currency-converter/Converter";
+import React from "react";
+import HomePhageContent from "../homePageContent/HomePageContent.jsx";
+
 const Home = () => {
 	return (
 		<>
-			{/* <Slider /> */}
-			{/* <Converter/> */}
+			<HomePhageContent/>
 		</>
 	);
 };

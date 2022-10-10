@@ -4,6 +4,7 @@ import  "./App.css";
 
 import Layout from "./components/layout/Layout";
 import Home from "./components/pages/Home";
+import MyPhage from './components/pages/MyPhage';
 import Page404 from "./components/pages/404";
 
 
@@ -13,6 +14,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Layout />} >
 						<Route index element={<Home/>} />
+						<Route path='myphage' element={<MyPhage/>} />
 						<Route path="*" element={<Page404 />} />
 					</Route>
 				</Routes>
