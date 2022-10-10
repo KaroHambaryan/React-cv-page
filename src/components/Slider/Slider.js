@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 import useGetData from "../services/service.hook";
-import ImageItem from "../slider__Image_Items/ImageItem.jsx";
+import ImageItem from "./ImageItem.jsx";
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../error-message/ErrorMessage";
 

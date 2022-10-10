@@ -4,10 +4,10 @@ import { useState, useEffect, useRef } from "react";
 // costom hook
 import useGetData from "../services/service.hook"
 import ErrorMessage from "../error-message/ErrorMessage";
-import Spinner from "../spinner/Spinner";
+import Spinner from "../spinner/Spinner.jsx";
 // convertrer components
-import Screen from "../currency-converter__screen/Screen.jsx";
-import Option from "../currency-converter__select-option/SelectOption";
+import Screen from "./Screen.jsx";
+import Option from "./SelectOption";
 
 // converter styles
 import "./converter.css";

@@ -2,10 +2,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import  "./App.css";
 
-import Layout from "./components/layout/Layout";
-import Home from "./components/pages/Home";
-import MyPhage from './components/pages/MyPhage';
-import Page404 from "./components/pages/404";
+import Layout from "./components/layout/Layout.jsx";
+import Home from "./components/pages/Home.jsx";
+import MyPhage from './components/pages/MyPhage.jsx';
+import Page404 from "./components/pages/404.jsx";
 
 
 function App() {

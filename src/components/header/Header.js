@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback  } from 'react'
 
 import header from './header.module.css';
 // import Burger from '../burger/Burger';
 
 const Header = () => {
 	// ================ Toggle Menu ===================
-	const[Toggle, showMenu] = useState(false)
+	const [Toggle, showMenu] = useState(false)
+
+	const toggleМenuАctivities = useCallback(() => {
+		showMenu(active => !active)
+	},[]);
+
 	return (
 		<header className={header.header}>
 			<nav className={`${header.nav} container`}>
@@ -50,10 +55,10 @@ const Header = () => {
 							</a>
 						</li>
 					</ul>
-					<i className={`uil uil-times ${header.nav__close}`} onClick={()=> showMenu(!Toggle)}></i>
+					<i className={`uil uil-times ${header.nav__close}`} onClick={toggleМenuАctivities}></i>
 				</div>
 
-				<div className={header.nav__toggle} onClick={()=> showMenu(!Toggle)}>
+				<div className={header.nav__toggle} onClick={toggleМenuАctivities}>
 					<i class="uil uil-apps"></i>
 				</div>
 			</nav>

@@ -4,7 +4,7 @@ import HomePhageContent from "../homePageContent/HomePageContent.jsx";
 const Home = () => {
 	return (
 		<>
-			<HomePhageContent/>
+			<HomePhageContent />
 		</>
 	);
 };
