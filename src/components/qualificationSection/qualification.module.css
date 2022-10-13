@@ -72,3 +72,24 @@
 .content_active{
 	display: block;
 }
+
+/* ================ BREAKPOINTS =================== */
+ /* For large devices */
+ @media only screen and (max-width: 992px) {
+	.container{
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+ /* For medium devices */
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 576px) {
+
+}
+ /* For small devices */
+@media only screen and (max-width: 350px) {
+
+}
