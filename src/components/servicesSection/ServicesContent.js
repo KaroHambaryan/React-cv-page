@@ -1,4 +1,4 @@
-import React, { useReducer} from 'react';
+import React, { useReducer } from 'react';
 
 
 // the initial state toggleState
@@ -22,22 +22,27 @@ const _GENE = {
 	_CLOSE_THE_MODAL_WINDOW: { type: "CLOSE" },
 }
 
-const ServicesContent = (props) => {
-	const {
+const ServicesContent = (
+	{
 		services, servicesTitle, servicesIconType,
-		modalTitle,modalDescription,serviceName_1,serviceName_2,serviceName_3,serviceName_4,
-		serviceName_5 } = props;
-	
+		modalTitle, modalDescription, serviceName_1,
+		serviceName_2, serviceName_3, serviceName_4,
+		serviceName_5
+	}
+) => {
+
+
 	const [state, dispatch] = useReducer(reducer, initial);
-	
+
 	return (
 		<div className={services.content}>
 			<div>
-				<i class={`${services.icon} ${servicesIconType}`}></i>
+				<i className={`${services.icon} ${servicesIconType}`}></i>
 				<h3 className={services.title}>
 					{servicesTitle}
 				</h3>
 			</div>
+			
 			<span
 				className={services.button}
 				onClick={(e) => {
@@ -45,8 +50,9 @@ const ServicesContent = (props) => {
 					dispatch(_GENE._OPEN_THE_MODAL_WINDOW);
 				}}>
 				View More
-				<i class={`${services.button_icon} uil uil-arrow-right`}></i>
+				<i className={`${services.button_icon} uil uil-arrow-right`}></i>
 			</span>
+
 			<div
 				className={
 					state.toggleState ?
@@ -55,54 +61,48 @@ const ServicesContent = (props) => {
 			>
 				<div className={services.modal_content}>
 					<i
-						class={`${services.modal_close} uil uil-times`}
+						className={`${services.modal_close} uil uil-times`}
 						onClick={(e) => {
 							e.stopPropagation();
 							dispatch(_GENE._CLOSE_THE_MODAL_WINDOW);
 						}}
 					></i>
 					<h3 className={services.modal_title}>{modalTitle}</h3>
-
 					<p className={services.modal_description}>
 						{modalDescription}
 					</p>
 
 					<ul className={`${services.modal_services} grid`}>
 						<li className={services.modal_service}>
-							<i class={`${services.modal_icon} uil uil-check-circle`}></i>
-
+							<i className={`${services.modal_icon} uil uil-check-circle`}></i>
 							<p className={services.modal_info}>
 								{serviceName_1}
 							</p>
 						</li>
 
 						<li className={services.modal_service}>
-							<i class={`${services.modal_icon} uil uil-check-circle`}></i>
-
+							<i className={`${services.modal_icon} uil uil-check-circle`}></i>
 							<p className={services.modal_info}>
 								{serviceName_2}
 							</p>
 						</li>
 
 						<li className={services.modal_service}>
-							<i class={`${services.modal_icon} uil uil-check-circle`}></i>
-
+							<i className={`${services.modal_icon} uil uil-check-circle`}></i>
 							<p className={services.modal_info}>
 								{serviceName_3}
 							</p>
 						</li>
 
 						<li className={services.modal_service}>
-							<i class={`${services.modal_icon} uil uil-check-circle`}></i>
-
+							<i className={`${services.modal_icon} uil uil-check-circle`}></i>
 							<p className={services.modal_info}>
 								{serviceName_4}
 							</p>
 						</li>
 
 						<li className={services.modal_service}>
-							<i class={`${services.modal_icon} uil uil-check-circle`}></i>
-
+							<i className={`${services.modal_icon} uil uil-check-circle`}></i>
 							<p className={services.modal_info}>
 								{serviceName_5}
 							</p>
@@ -110,7 +110,6 @@ const ServicesContent = (props) => {
 					</ul>
 				</div>
 			</div>
-			{console.log("opopo")}
 		</div>
 	)
 }

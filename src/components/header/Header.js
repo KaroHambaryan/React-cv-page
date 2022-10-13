@@ -59,7 +59,7 @@ const Header = () => {
 				</div>
 
 				<div className={header.nav__toggle} onClick={toggleМenuАctivities}>
-					<i class="uil uil-apps"></i>
+					<i className="uil uil-apps"></i>
 				</div>
 			</nav>
 		</header>

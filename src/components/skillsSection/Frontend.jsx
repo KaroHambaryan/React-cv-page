@@ -8,7 +8,7 @@ const Frontend = ({ skills }) => {
 			<div className={skills.box}>
 				<div className={skills.group}>
 					<div className={skills.data}>
-						<i class={`${skills.bx_badge_check} bx bx-badge-check`}></i>
+						<i className={`${skills.bx_badge_check} bx bx-badge-check`}></i>
 
 						<div>
 							<h3 className={skills.name}>HTML</h3>
@@ -17,7 +17,7 @@ const Frontend = ({ skills }) => {
 					</div>
 
 					<div className={skills.data}>
-						<i class={`${skills.bx_badge_check} bx bx-badge-check`}></i>
+						<i className={`${skills.bx_badge_check} bx bx-badge-check`}></i>
 
 						<div>
 							<h3 className={skills.name}>CSS</h3>
@@ -26,7 +26,7 @@ const Frontend = ({ skills }) => {
 					</div>
 
 					<div className={skills.data}>
-						<i class={`${skills.bx_badge_check} bx bx-badge-check`}></i>
+						<i className={`${skills.bx_badge_check} bx bx-badge-check`}></i>
 						<div>
 							<h3 className={skills.name}>JavaScript</h3>
 							<span className={skills.level}>Intermediate</span>
@@ -36,7 +36,7 @@ const Frontend = ({ skills }) => {
 
 				<div className={skills.group}>
 					<div className={skills.data}>
-						<i class={`${skills.bx_badge_check} bx bx-badge-check`}></i>
+						<i className={`${skills.bx_badge_check} bx bx-badge-check`}></i>
 
 						<div>
 							<h3 className={skills.name}>Bootstrap</h3>
@@ -45,7 +45,7 @@ const Frontend = ({ skills }) => {
 					</div>
 
 					<div className={skills.data}>
-						<i class={`${skills.bx_badge_check} bx bx-badge-check`}></i>
+						<i className={`${skills.bx_badge_check} bx bx-badge-check`}></i>
 						
 						<div>
 							<h3 className={skills.name}>Git</h3>
@@ -54,7 +54,7 @@ const Frontend = ({ skills }) => {
 					</div>
 
 					<div className={skills.data}>
-						<i class={`${skills.bx_badge_check} bx bx-badge-check`}></i>
+						<i className={`${skills.bx_badge_check} bx bx-badge-check`}></i>
 						
 						<div>
 						<h3 className={skills.name}>React</h3>

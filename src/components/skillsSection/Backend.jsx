@@ -8,7 +8,7 @@ const Backend = ({ skills }) => {
 			<div className={skills.box}>
 				<div className={skills.group}>
 					<div className={skills.data}>
-						<i class={`${skills.bx_badge_check} bx bx-badge-check`}></i>
+						<i className={`${skills.bx_badge_check} bx bx-badge-check`}></i>
 
 						<div>
 							<h3 className={skills.name}>PHP</h3>
@@ -17,7 +17,7 @@ const Backend = ({ skills }) => {
 					</div>
 
 					<div className={skills.data}>
-						<i class={`${skills.bx_badge_check} bx bx-badge-check`}></i>
+						<i className={`${skills.bx_badge_check} bx bx-badge-check`}></i>
 
 						<div>
 							<h3 className={skills.name}>Node Js</h3>
@@ -26,7 +26,7 @@ const Backend = ({ skills }) => {
 					</div>
 
 					<div className={skills.data}>
-						<i class={`${skills.bx_badge_check} bx bx-badge-check`}></i>
+						<i className={`${skills.bx_badge_check} bx bx-badge-check`}></i>
 
 						<div>
 							<h3 className={skills.name}>Python</h3>
@@ -37,7 +37,7 @@ const Backend = ({ skills }) => {
 
 				<div className={skills.group}>
 					<div className={skills.data}>
-						<i class={`${skills.bx_badge_check} bx bx-badge-check`}></i>
+						<i className={`${skills.bx_badge_check} bx bx-badge-check`}></i>
 
 						<div>
 							<h3 className={skills.name}>MySQL</h3>
@@ -46,7 +46,7 @@ const Backend = ({ skills }) => {
 					</div>
 
 					<div className={skills.data}>
-						<i class={`${skills.bx_badge_check} bx bx-badge-check`}></i>
+						<i className={`${skills.bx_badge_check} bx bx-badge-check`}></i>
 
 						<div>
 							<h3 className={skills.name}>Firebase</h3>
@@ -55,7 +55,7 @@ const Backend = ({ skills }) => {
 					</div>
 
 					<div className={skills.data}>
-						<i class={`${skills.bx_badge_check} bx bx-badge-check`}></i>
+						<i className={`${skills.bx_badge_check} bx bx-badge-check`}></i>
 
 						<div>
 							<h3 className={skills.name}>SQL</h3>

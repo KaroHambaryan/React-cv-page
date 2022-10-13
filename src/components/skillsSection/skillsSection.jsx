@@ -4,7 +4,7 @@ import skills from "./skills.module.css";
 import Frontend from './Frontend';
 import Backend from './Backend';
 
-const Skills = () => {
+const SkillsSection = () => {
 	return (
 		<section className={`${skills.skills} section`} id="skills">
 			<h2 className="section__title">Skills</h2>
@@ -20,4 +20,4 @@ const Skills = () => {
 	)
 }
 
-export default Skills
+export default SkillsSection;
