@@ -1,10 +1,34 @@
-import React from 'react';
+import React, { useReducer} from 'react';
+
+
+// the initial state toggleState
+const initial = { toggleState: false }
+
+// Controlling the opening and closing of a modal window
+function reducer(state, action) {
+	switch (action.type) {
+		case "OPEN":
+			return { toggleState: !state.toggleState };
+		case "CLOSE":
+			return { toggleState: !state.toggleState };
+		default:
+			break;
+	}
+}
+
+// Аction Тype
+const _GENE = {
+	_OPEN_THE_MODAL_WINDOW: { type: "OPEN" },
+	_CLOSE_THE_MODAL_WINDOW: { type: "CLOSE" },
+}
 
 const ServicesContent = (props) => {
 	const {
-		services, onDispatchOpen, onDispatchClose, state, servicesTitle, servicesIconType,
+		services, servicesTitle, servicesIconType,
 		modalTitle,modalDescription,serviceName_1,serviceName_2,serviceName_3,serviceName_4,
 		serviceName_5 } = props;
+	
+	const [state, dispatch] = useReducer(reducer, initial);
 	
 	return (
 		<div className={services.content}>
@@ -18,7 +42,7 @@ const ServicesContent = (props) => {
 				className={services.button}
 				onClick={(e) => {
 					e.stopPropagation();
-					onDispatchOpen();
+					dispatch(_GENE._OPEN_THE_MODAL_WINDOW);
 				}}>
 				View More
 				<i class={`${services.button_icon} uil uil-arrow-right`}></i>
@@ -34,8 +58,7 @@ const ServicesContent = (props) => {
 						class={`${services.modal_close} uil uil-times`}
 						onClick={(e) => {
 							e.stopPropagation();
-				
-							onDispatchClose();
+							dispatch(_GENE._CLOSE_THE_MODAL_WINDOW);
 						}}
 					></i>
 					<h3 className={services.modal_title}>{modalTitle}</h3>
