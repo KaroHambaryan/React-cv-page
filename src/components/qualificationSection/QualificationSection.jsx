@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useReducer } from 'react';
+import { useCallback } from 'react';
 
 
 import qualification from "./qualification.module.css";
@@ -6,33 +7,84 @@ import qualification from "./qualification.module.css";
 import QualificationDataMain from "./QualificationDataMain.jsx";
 import RenderRouterAndLine from "./RenderRouterAndLine.jsx";
 
+// the initial state toggleState
+const initial = { toggleState: true }
+
+// Controlling the opening and closing of a modal window
+function reducer(state, action) {
+	switch (action.type) {
+		case "FIRST":
+			return { toggleState: true };
+		case "NEXT":
+			return { toggleState: false };
+		default:
+			break;
+	}
+}
+
+// Аction Тype
+const _GENE = {
+	_SHOW_FIRST: { type: "FIRST" },
+	_SHOW_NEXT: { type: "NEXT" },
+}
+
 // <div className={qualification.tabs}></div>
 // <div className={`${qualification.container} container`}></div>
 
 const QualificationSection = () => {
+
+	const [state, dispatch] = useReducer(reducer, initial);
+
+	const activatePreviousOrNext = useCallback((e, data) => {
+		e.preventDefault();
+		dispatch(data);
+	}, [])
 
 	return (
 		<section className={`${qualification.qualification} section`}>
 			<h2 className="section__title">Qualification</h2>
 			<span className="section__subtitle">My personel journey</span>
 
-			{/* container--------------------------------------*/}
 			<div className={`${qualification.container} container`}>
-				{/* tabs------------------------- */}
 				<div className={qualification.tabs}>
-					<div className={`${qualification.button} ${qualification.button_active} button--flex`}>
-						<i className={`${qualification.icon} uil uil-graduation-cap`}>
-						</i>Education
+					<div
+						onClick={(e) => {
+							if (!state.toggleState) {
+								activatePreviousOrNext(e, _GENE._SHOW_FIRST);
+							}
+						}}
+						className={
+							state.toggleState ?
+								`${qualification.button} ${qualification.button_active} button--flex` :
+								`${qualification.button} button--flex`
+						}
+					>
+						<i className={`${qualification.icon} uil uil-graduation-cap`}></i>Education
 					</div>
 
-					<div className={`${qualification.button} button--flex`}>
-						<i className={`${qualification.icon} uil uil-briefcase-alt`}>
-						</i>Experience
+					<div
+						onClick={(e) => {
+							if (state.toggleState) {
+								activatePreviousOrNext(e, _GENE._SHOW_NEXT);
+							}
+						}}
+						className={
+							state.toggleState ?
+								`${qualification.button} button--flex` :
+								`${qualification.button} ${qualification.button_active} button--flex`
+						}
+					>
+						<i className={`${qualification.icon} uil uil-briefcase-alt`}></i>Experience
 					</div>
 				</div>
-				{/* ------end tabs and start sections-------------------- */}
+
 				<div className={qualification.sections}>
-					<div className={`${qualification.content} ${qualification.content_active}`}>
+					<div className={
+						state.toggleState ?
+							`${qualification.content} ${qualification.content_active}` :
+							qualification.content
+					}
+					>
 						<div className={qualification.data}>
 							<QualificationDataMain
 								qualification={qualification}
@@ -80,7 +132,12 @@ const QualificationSection = () => {
 						</div>
 					</div>
 
-					<div className={qualification.content}>
+					<div className={
+						state.toggleState ?
+							qualification.content :
+							`${qualification.content} ${qualification.content_active}`
+					}
+					>
 						<div className={qualification.data}>
 							<QualificationDataMain
 								qualification={qualification}
@@ -116,9 +173,7 @@ const QualificationSection = () => {
 						</div>
 					</div>
 				</div>
-				{/* sections end-------------------------------- */}
 			</div>
-			{/* container end------------------------------------ */}
 		</section>
 	)
 }
