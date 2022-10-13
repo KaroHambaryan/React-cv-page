@@ -57,6 +57,7 @@ const Data = ({ home }) => {
 				I'm creative designer based in New York,
 				and I'm very passionate and dedicated to my work.
 			</p>
+			
 			<a href="#contact" className="button button--flex">
 				Say Hello
 				<svg

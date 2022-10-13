@@ -1,4 +1,4 @@
-import React, { useState, useCallback  } from 'react'
+import React, { useState, useCallback } from 'react'
 
 import header from './header.module.css';
 // import Burger from '../burger/Burger';
@@ -9,7 +9,7 @@ const Header = () => {
 
 	const toggleМenuАctivities = useCallback(() => {
 		showMenu(active => !active)
-	},[]);
+	}, []);
 
 	return (
 		<header className={`${header.header} `}>
@@ -20,7 +20,7 @@ const Header = () => {
 				<div className={Toggle ? `${header.nav__menu} ${header.show_menu}` : header.nav__menu}>
 					<ul className={`${header.nav__list} grid`}>
 						<li className={header.nav__item}>
-							<a href="#home" className={header.nav__link }>
+							<a href="#home" className={header.nav__link}>
 								<i className={`uil uil-estate ${header.nav__icon}`}></i> Home
 							</a>
 						</li>
@@ -51,7 +51,7 @@ const Header = () => {
 
 						<li className={header.nav__item}>
 							<a href="#contakt" className={`${header.nav__link} ${header.active_link}`}>
-								<i className={`uil uil-message ${header.nav__icon}`}></i> Contact
+								<i className={`uil uil-message ${header.nav__icon}`}></i> ContactSection
 							</a>
 						</li>
 					</ul>

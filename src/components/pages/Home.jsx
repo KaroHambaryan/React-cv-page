@@ -6,6 +6,7 @@ import SkillsSection from "../skillsSection/skillsSection.jsx";
 import ServisesSection from "../servicesSection/ServisesSection.jsx";
 import QualificationSection from "../qualificationSection/QualificationSection.jsx"
 import Testimonials from "../testimonials/Testimonials.jsx";
+import ContactSection from "../contactSection/ContactSection.jsx"
 
 const Home = () => {
 	return (
@@ -16,6 +17,7 @@ const Home = () => {
 			<ServisesSection />
 			<QualificationSection />
 			<Testimonials />
+			<ContactSection/>
 		</>
 	);
 };

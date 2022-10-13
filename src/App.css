@@ -171,6 +171,15 @@ img {
 	align-items: center;
 }
 
+/* ================ Testimonals.jsx Swiper css ==== */
+/* Seiper class */
+.swiper-pagination-bullet{
+	background-color: var(--text-color) !important; 
+}
+
+.swiper-pagination-bullet-active{
+	background-color: var(--text-color) !important; 
+}
 /* ================ BREAKPOINTS =================== */
  /* For large devices */
 @media only screen and (max-width: 992px) {
