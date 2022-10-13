@@ -5,9 +5,9 @@ import Social from "./Social.jsx";
 import Data from "./Data.jsx";
 import ScrollDown from "./ScrollDown";
 
-const HomePageContent = () => {
+const HomeSection = () => {
 	return (
-		<section className={`${home.home} section`}>
+		<section className={`${home.home}  section`}>
 			<div className={`${home.container} container grid`}>
 				<div className={`${home.content} grid`}>
 					<Social home={home} />
@@ -20,4 +20,4 @@ const HomePageContent = () => {
 	)
 }
 
-export default HomePageContent;
+export default HomeSection;

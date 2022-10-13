@@ -9,7 +9,7 @@ const Layout = () => {
 	return (
 		<>
 			<Header />
-			<main className="container">
+			<main className="main">
 				<Suspense fallback={<Spinner />}>
 					<Outlet />
 				</Suspense>

@@ -12,7 +12,7 @@ const Header = () => {
 	},[]);
 
 	return (
-		<header className={header.header}>
+		<header className={`${header.header} `}>
 			<nav className={`${header.nav} container`}>
 
 				<a href="index.html" className={header.nav__logo}> Smith </a>

@@ -1,10 +1,17 @@
 import React from "react";
-import HomePhageContent from "../homePageContent/HomePageContent.jsx";
+
+import HomeSection from "../homeSection/HomeSection.jsx";
+import AboutSection from "../aboutSection/AboutSection.jsx";
+import Skills from "../skillsSection/skillsSection.jsx";
+import ServisesSection from "../servicesSection/ServisesSection";
 
 const Home = () => {
 	return (
 		<>
-			<HomePhageContent />
+			<HomeSection />
+			<AboutSection/>
+			<Skills/>
+			<ServisesSection/>
 		</>
 	);
 };
