@@ -1,18 +1,25 @@
 import React, { useState, useCallback } from 'react'
+import { Link, NavLink } from 'react-router-dom';
 
 import header from './header.module.css';
 // import Burger from '../burger/Burger';
 
 const Header = () => {
-		// ================ Change Background Header ===================
+
+
+
+	// ================ Change Background Header ===================
 	window.addEventListener("scroll", function () {
 		const header = document.querySelector(".header");
 		if (this.scrollY >= 80) {
-			header.classList.add("scroll-header");
+			header.classList.add("show-shadow-header");
 		} else {
-			header.classList.remove("scroll-header");
+			header.classList.remove("show-shadow-header");
 		}
 	})
+
+
+
 	// ================ Toggle Menu ===================
 	const [Toggle, showMenu] = useState(false);
 
@@ -20,21 +27,24 @@ const Header = () => {
 		showMenu(active => !active)
 	}, []);
 
+
 	return (
-		<header className="header">
+		<header className={header.header}>
 			<nav className={`${header.nav} container`}>
 
 				<a href="index.html" className={header.nav__logo}>
 					Smith
 				</a>
 
-				<div className={Toggle ? `${header.nav__menu} ${header.show_menu}` : header.nav__menu}>
+				<div
+					className={
+						Toggle ? `${header.nav__menu} ${header.show_menu}` :
+							header.nav__menu
+					}>
 					<ul className={`${header.nav__list} grid`}>
+
 						<li className={header.nav__item}>
-							<a
-								href="#home"
-								className={header.nav__link}
-							>
+							<a href="#home" className={header.nav__link}>
 								<i className={`uil uil-estate ${header.nav__icon}`}></i> Home
 							</a>
 						</li>
@@ -69,6 +79,7 @@ const Header = () => {
 							</a>
 						</li>
 					</ul>
+					
 					<i className={`uil uil-times ${header.nav__close}`} onClick={toggleМenuАctivities}></i>
 				</div>
 

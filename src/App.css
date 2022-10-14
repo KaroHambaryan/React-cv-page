@@ -199,17 +199,9 @@ img {
 }
 
 /* ===============Header.jsx=========================== */
-.header{
-	width: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: var(--z-fixed);
-	background-color: var(--body-color);
-}
 
 /* scroll header */
-.scroll-header{
+.show-shadow-header{
 	box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
 }
 /* ================ BREAKPOINTS =================== */
@@ -250,6 +242,7 @@ img {
 	.show_scroll{
 		bottom: 4rem;
 	}
+
 }
 
 @media only screen and (max-width: 576px) {
