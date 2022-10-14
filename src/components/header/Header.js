@@ -4,23 +4,37 @@ import header from './header.module.css';
 // import Burger from '../burger/Burger';
 
 const Header = () => {
+		// ================ Change Background Header ===================
+	window.addEventListener("scroll", function () {
+		const header = document.querySelector(".header");
+		if (this.scrollY >= 80) {
+			header.classList.add("scroll-header");
+		} else {
+			header.classList.remove("scroll-header");
+		}
+	})
 	// ================ Toggle Menu ===================
-	const [Toggle, showMenu] = useState(false)
+	const [Toggle, showMenu] = useState(false);
 
 	const toggleМenuАctivities = useCallback(() => {
 		showMenu(active => !active)
 	}, []);
 
 	return (
-		<header className={`${header.header} `}>
+		<header className="header">
 			<nav className={`${header.nav} container`}>
 
-				<a href="index.html" className={header.nav__logo}> Smith </a>
+				<a href="index.html" className={header.nav__logo}>
+					Smith
+				</a>
 
 				<div className={Toggle ? `${header.nav__menu} ${header.show_menu}` : header.nav__menu}>
 					<ul className={`${header.nav__list} grid`}>
 						<li className={header.nav__item}>
-							<a href="#home" className={header.nav__link}>
+							<a
+								href="#home"
+								className={header.nav__link}
+							>
 								<i className={`uil uil-estate ${header.nav__icon}`}></i> Home
 							</a>
 						</li>
@@ -50,8 +64,8 @@ const Header = () => {
 						</li>
 
 						<li className={header.nav__item}>
-							<a href="#contakt" className={`${header.nav__link} ${header.active_link}`}>
-								<i className={`uil uil-message ${header.nav__icon}`}></i> ContactSection
+							<a href="#contact" className={`${header.nav__link} ${header.active_link}`}>
+								<i className={`uil uil-message ${header.nav__icon}`}></i> Contact
 							</a>
 						</li>
 					</ul>

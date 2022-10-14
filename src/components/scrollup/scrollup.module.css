@@ -1,0 +1,16 @@
+.scrollup_icon{
+	font-size: 1.5rem;
+	color: var(--container-color);
+}
+.scrollup:hover{
+	background-color: var(--title-color-dark);
+}
+
+/* ================ BREAKPOINTS =================== */
+ /* For large devices */
+ @media only screen and (max-width: 992px) {
+	.scrollup_icon{
+		font-size: 1.25rem;
+	}
+ }
+

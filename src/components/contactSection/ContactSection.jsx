@@ -20,7 +20,7 @@ const ContactSection = () => {
 		e.target.reset()
 	};
 	return (
-		<section className={contact.contact} id={contact}>
+		<section id="contact" className={contact.contact}>
 			<h2 className="section__title">Get in touch</h2>
 			<span className="section__subtitle">Contact Me</span>
 

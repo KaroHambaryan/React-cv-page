@@ -41,7 +41,7 @@ const QualificationSection = () => {
 	}, [])
 
 	return (
-		<section className={`${qualification.qualification} section`}>
+		<section id="portfolio" className={`${qualification.qualification} section`}>
 			<h2 className="section__title">Qualification</h2>
 			<span className="section__subtitle">My personel journey</span>
 

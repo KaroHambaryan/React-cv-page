@@ -7,7 +7,7 @@ import ScrollDown from "./ScrollDown";
 
 const HomeSection = () => {
 	return (
-		<section className={`${home.home}  section`}>
+		<section id="home" className={`${home.home}  section`}>
 			<div className={`${home.container} container grid`}>
 				<div className={`${home.content} grid`}>
 					<Social home={home} />

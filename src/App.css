@@ -180,6 +180,38 @@ img {
 .swiper-pagination-bullet-active{
 	background-color: var(--text-color) !important; 
 }
+/* =================Scrollup.jsx ===================== */
+.scrollup{
+	position: fixed;
+	right: 2.5rem;
+	bottom: -20%;
+	background-color: var(--title-color);
+	opacity: 0.8;
+	padding: 0.3rem 0.5rem;
+	border-radius: 0.4rem;
+	z-index: var(--z-tooltip);
+	transition: .4s; 
+}
+
+/* Sohw-scroll */
+.show_scroll{
+	bottom: 3rem;
+}
+
+/* ===============Header.jsx=========================== */
+.header{
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: var(--z-fixed);
+	background-color: var(--body-color);
+}
+
+/* scroll header */
+.scroll-header{
+	box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+}
 /* ================ BREAKPOINTS =================== */
  /* For large devices */
 @media only screen and (max-width: 992px) {
@@ -196,6 +228,11 @@ img {
 		width: 22px;
 		height: 22px;
 	}
+	/* Scrollup.jsx */
+	.scrollup{
+		right: 1.5rem;
+		padding: 0.25rem 0.4rem;
+	}
 }
  /* For medium devices */
 @media only screen and (max-width: 768px) {
@@ -208,6 +245,10 @@ img {
 
 	.section__subtitle{
 		margin-bottom: var(--mb-3);
+	}
+
+	.show_scroll{
+		bottom: 4rem;
 	}
 }
 
@@ -222,5 +263,9 @@ img {
 	.container{
 		margin-left: var(--mb-1);
 		margin-right: var(--mb-1);
+	}
+
+	.scrollup{
+		right: 1rem;
 	}
 }
