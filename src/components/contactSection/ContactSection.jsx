@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 import contact from "./contact.module.css";
 import ContactCard from "./ContactCard.jsx";
@@ -6,6 +7,18 @@ import ContactCard from "./ContactCard.jsx";
 // <div className={contact.info}></div>
 // <div className={`${contact.container} `}></div>
 const ContactSection = () => {
+	const form = useRef();
+
+	const sendEmail = (e) => {
+		e.preventDefault();
+		emailjs.sendForm(
+			'service_fi1cqde',
+			'template_mzva4w2',
+			form.current,
+			'kV1rfQQoMLa7iOmX8'
+		)
+		e.target.reset()
+	};
 	return (
 		<section className={contact.contact} id={contact}>
 			<h2 className="section__title">Get in touch</h2>
@@ -43,7 +56,11 @@ const ContactSection = () => {
 				<div className={contact.content}>
 					<h3 className={contact.title}>Write me your project</h3>
 
-					<form action="*" className={contact.form}>
+					<form
+						ref={form}
+						onSubmit={sendEmail}
+						className={contact.form}
+					>
 						<div className={contact.form_div}>
 							<label htmlFor="name" className={contact.form_tag}>Name</label>
 							<input
@@ -66,7 +83,7 @@ const ContactSection = () => {
 							/>
 						</div>
 
-						<div className={contact.form_div}>
+						<div className={`${contact.form_div} ${contact.form_area}`}>
 							<label htmlFor="project" className={contact.form_tag}>Project</label>
 							<textarea
 								id="project"
@@ -77,9 +94,12 @@ const ContactSection = () => {
 								placeholder="Write your project"
 							></textarea>
 						</div>
-
-						<button href="#contact" className="button button--flex">
-							Say Hello
+						<button
+							href="#contact"
+							className="button button--flex"
+						>
+							Sent Message
+							div
 							<svg
 								className="button__icon"
 								xmlns="http://www.w3.org/2000/svg"

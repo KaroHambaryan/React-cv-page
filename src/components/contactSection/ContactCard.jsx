@@ -7,8 +7,8 @@ const ContactCard = ({ contact, catdTitle, cardData, _URL, buttonLogo }) => {
 			<h3 className={contact.card_title}>{catdTitle}</h3>
 			<span className={contact.card_data}>{cardData}</span>
 
-			<a href={_URL} className={contact.button}>Write me
-				<i className={`${contact.button_icon} bx bx-right-arrow-alt`}></i>
+			<a href={_URL} className={contact.card_button}>Write me
+				<i className={`${contact.card_button_icon} bx bx-right-arrow-alt`}></i>
 			</a>
 		</div>
 	);
