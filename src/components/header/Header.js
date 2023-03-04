@@ -6,8 +6,6 @@ import header from './header.module.css';
 
 const Header = () => {
 
-
-
 	// ================ Change Background Header ===================
 	window.addEventListener("scroll", function () {
 		const header = document.querySelector(".header");
@@ -32,9 +30,17 @@ const Header = () => {
 		<header className={header.header}>
 			<nav className={`${header.nav} container`}>
 
-				<a href="index.html" className={header.nav__logo}>
-					Smith
-				</a>
+				<Link
+					to="/"
+					className={header.nav__logo}
+				> Smith
+				</Link>
+
+				<Link
+					to="myphage"
+					className={header.nav__logo}
+				> currencyc onverter
+				</Link>
 
 				<div
 					className={
@@ -79,7 +85,7 @@ const Header = () => {
 							</a>
 						</li>
 					</ul>
-					
+
 					<i className={`uil uil-times ${header.nav__close}`} onClick={toggleМenuАctivities}></i>
 				</div>
 

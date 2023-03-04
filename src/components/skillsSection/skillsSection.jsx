@@ -1,6 +1,7 @@
 import React from 'react';
 
 import skills from "./skills.module.css";
+
 import Frontend from './Frontend';
 import Backend from './Backend';
 
@@ -11,11 +12,11 @@ const SkillsSection = () => {
 			<span className="section__subtitle">My technical level</span>
 
 			<div className={`${skills.container} container grid`}>
-				<Frontend skills={ skills } />
-				
-				<Backend skills={ skills }/>
+				<Frontend skills={skills} />
+
+				<Backend skills={skills} />
 			</div>
-		
+
 		</section >
 	)
 }
